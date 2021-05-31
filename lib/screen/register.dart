@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/model/profile.dart';
@@ -55,7 +56,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               profile.email = email;
                             },
                           ),
-                          TextField(),
                           SizedBox(
                             height: 15,
                           ),
@@ -75,12 +75,18 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                 "Register",
                                 style: TextStyle(fontSize: 20),
                               ),
-                              onPressed: () {
+                              onPressed: () async {
                                 if (formkey.currentState.validate()) {
                                   formkey.currentState.save();
-                                  print(
-                                      "email = ${profile.email} password = ${profile.password}");
-                                  formkey.currentState.reset();
+                                  try {
+                                    await FirebaseAuth.instance
+                                        .createUserWithEmailAndPassword(
+                                            email: profile.email,
+                                            password: profile.password);
+                                    formkey.currentState.reset();
+                                  } on FirebaseAuthException catch (e) {
+                                    print(e.message);
+                                  }
                                 }
                               },
                             ),
