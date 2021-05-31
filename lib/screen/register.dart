@@ -2,6 +2,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/model/profile.dart';
+import 'package:flutter_application_1/screen/home.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:form_field_validator/form_field_validator.dart';
 
 class RegisterScreen extends StatefulWidget {
@@ -84,8 +86,16 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                             email: profile.email,
                                             password: profile.password);
                                     formkey.currentState.reset();
+                                    Navigator.pushReplacement(context,
+                                        MaterialPageRoute(builder: (context) {
+                                      return HomeScreen();
+                                    }));
                                   } on FirebaseAuthException catch (e) {
-                                    print(e.message);
+                                    // print(e.code);
+                                    // print(e.message);
+                                    Fluttertoast.showToast(
+                                        msg: e.message,
+                                        gravity: ToastGravity.TOP);
                                   }
                                 }
                               },
