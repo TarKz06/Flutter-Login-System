@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "495725420482",
+    "project_id": "myloginapplication-bfb2d",
+    "storage_bucket": "myloginapplication-bfb2d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:495725420482:android:a809296a462e845c96c05b",
+        "android_client_info": {
+          "package_name": "com.example.flutter_application_1"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "495725420482-8gdv0r6vb44vikcuh99k6ef71jc6sllu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAsa23NBuBrL0FoCM9pfdqrZ5_vQhSV814"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "495725420482-8gdv0r6vb44vikcuh99k6ef71jc6sllu.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
