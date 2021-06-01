@@ -91,10 +91,18 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                       return HomeScreen();
                                     }));
                                   } on FirebaseAuthException catch (e) {
-                                    // print(e.code);
+                                    print(e.code);
                                     // print(e.message);
+                                    String message;
+                                    if (e.code == 'email-already-in-use') {
+                                      message = "ใช้เมลอื่นนนนนน";
+                                    } else if (e.code == 'weak-password') {
+                                      message = "เลขไม่ครบ";
+                                    } else {
+                                      message = e.message;
+                                    }
                                     Fluttertoast.showToast(
-                                        msg: e.message,
+                                        msg: message,
                                         gravity: ToastGravity.TOP);
                                   }
                                 }
