@@ -84,12 +84,17 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                     await FirebaseAuth.instance
                                         .createUserWithEmailAndPassword(
                                             email: profile.email,
-                                            password: profile.password);
-                                    formkey.currentState.reset();
-                                    Navigator.pushReplacement(context,
-                                        MaterialPageRoute(builder: (context) {
-                                      return HomeScreen();
-                                    }));
+                                            password: profile.password)
+                                        .then((value) {
+                                      formkey.currentState.reset();
+                                      Fluttertoast.showToast(
+                                          msg: "Finish",
+                                          gravity: ToastGravity.TOP);
+                                      Navigator.pushReplacement(context,
+                                          MaterialPageRoute(builder: (context) {
+                                        return HomeScreen();
+                                      }));
+                                    });
                                   } on FirebaseAuthException catch (e) {
                                     print(e.code);
                                     // print(e.message);
